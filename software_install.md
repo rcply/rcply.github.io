@@ -1,9 +1,9 @@
 
 ## Installing software on a Mac
 
-### Do you have a compiler installed already?
+This is sometimes a difficult and frustrating business. These notes are just for the easy cases. Most cases are easy, especially for popular software (one of the reasons that software might be popular is that it's easy to install), but when things don't work, there are so many possible things that might have gone wrong that you'll need to get advice from an expert or Google the error message.
 
-This is sometimes a difficult and frustrating business. These notes are just for the easy cases.
+### Do you have a compiler installed already?
 
 You need to open a 'Terminal'. You can find the Terminal program from the Finder, following:
 
