@@ -1,7 +1,6 @@
-# one two three four five
+# Bioinformatics pages
 
-This is some content
+[assembly a transcriptome from short reads](transcriptomes.md)
+[searching a fasta database locally](local_fasta_search.md)
+[orthologs from reciprocal best hits](rbh_orthologs.md)
 
-## and another header
-
-blah blah
