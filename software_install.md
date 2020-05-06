@@ -14,9 +14,14 @@ The icon is a little TV screen with a '>' in the top left corner. Open it.
 
 Not all software needs to be compiled, but a lot does. Check if you have a C compiler installed by typing `gcc`.
 
+```bash
+$ gcc
+```
+
 If you get an error message like:
 
 ```bash
+$ gcc
 clang: error: no input files
 ```
 
