@@ -1,9 +1,11 @@
 
-## Installing software on a Mac
+## Installing software on a Mac or Unix-like system
 
-This is sometimes a difficult and frustrating business. These notes are just for the easy cases. Most cases are easy, especially for popular software (one of the reasons that software might be popular is that it's easy to install), but when things don't work, there are so many possible things that might have gone wrong that you'll need to get advice from an expert or Google the error message.
+This can be a difficult and frustrating business. These notes are just for the easy cases. Most cases are easy, especially for popular software (one of the reasons that software might be popular is that it's easy to install), but when things don't work, there are so many possible things that might have gone wrong that you'll need to get advice from an expert or Google the error message.
 
-### Do you have a compiler installed already?
+Ordinary Unix systems generally are set up to allow compilation of programs - you can skip to the next section. If you're using a Mac, you may need to install a compiler first.
+
+### Do you have a compiler installed already (Macs)?
 
 You need to open a 'Terminal'. You can find the Terminal program from the Finder, following:
 
@@ -33,7 +35,7 @@ xcode-select -install
 
 ### Compile the HMMER software
 
-Download the latest [HMMER](http://hmmer.org/download.html) code from http://hmmer.org/download.html.
+Download the latest [HMMER](http://hmmer.org/download.html) code from http://hmmer.org/download.html. HMMER is a set of programs for performing sensitive searches of protein sequence databases using Hidden Markov Models of protein sequence families.
 
 You could right/ctrl-click on the link and 'Download linked file' or you could use curl:
 
@@ -41,7 +43,7 @@ You could right/ctrl-click on the link and 'Download linked file' or you could u
 curl -O http://eddylab.org/software/hmmer/hmmer-3.3.tar.gz
 ```
 
-`.tar.gz` files are a typical way of distributing Unix software source code. The `tar` file is an archive (it stands for 'Tape ARchive', from the time when things were stored on tapes)- a single file with many files stored inside, and the `.gz` part is `gzip` compression. You can unpack the entire thing with:
+`.tar.gz` files are a typical way of distributing Unix software source code. The `tar` file is an archive (it stands for 'Tape ARchive', from the time when things were stored on tapes) - a single file with many files stored inside, and the `.gz` part is `gzip` compression. You can unpack the entire thing with:
 
 ```bash
 tar -zvxf hmmer-3.3.tar.gz
@@ -63,7 +65,8 @@ The `--prefix /your/install/path` is optional, if you don't want to use the plac
 I recommend also installing the 'easel' tools as there is some useful stuff there.
 
 ```bash
-(cd easel; make install)
+cd easel
+make install
 ```
 You can check whether it has worked - type `phmmer`:
 
