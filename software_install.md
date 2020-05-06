@@ -20,7 +20,7 @@ $ gcc
 
 If you get an error message like:
 
-```bash
+```
 $ gcc
 clang: error: no input files
 ```
@@ -67,7 +67,7 @@ I recommend also installing the 'easel' tools as there is some useful stuff ther
 ```
 You can check whether it has worked - type `phmmer`:
 
-```bash
+```
 % phmmer
 Incorrect number of command line arguments.
 Usage: phmmer [-options] <seqfile> <seqdb>
@@ -77,4 +77,4 @@ where basic options are:
 
 To see more help on available options, do phmmer -h
 ```
-If you see this, it *has* worked. If you get `phmmer: command not found`, open a new Terminal and try again. If it still hasn't worked, get advice from your local source of advice.
+If you see this, it *has* worked. If you get `phmmer: command not found`, open a new Terminal and try again (just the typing `phmmer`, not the whole install). If it still hasn't worked, get advice from your local source of advice.
