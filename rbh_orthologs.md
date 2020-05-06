@@ -12,11 +12,11 @@ important that E-value thresholds *per se*.
 
 We need to set up two sets of searches - the proteins from genome a vs the proteins from genome b, and *vice versa*. We're only interested in the best hit, because we're ignoring the possibility of paralogs (this is only a quick and dirty analysis).
 
-I do this using `ssearch` from the FASTA package, but you could use BLAST. The important thing is that the 1st column of output contains the identifier of the searched sequence and the 2nd column, the database hit. In the commands below the `-m 8` option specifies this sort of tabular output. `-b 1` specifies just the best hit. `-E 0.1` is an E-value threshold, just to be on the safe side and guard against really spurious hits that happen to be also be 'reciprocal'.
+I do this using `ssearch` from the FASTA package, but you could use BLAST. The important thing is that the 1st column of output contains the identifier of the searched sequence and the 2nd column, the database hit. In the commands below the `-m 8` option specifies this sort of tabular output. `-b 1` specifies just the best hit. `-E 0.1` is an E-value threshold, just to be on the safe side and guard against really spurious hits that happen to be also be 'reciprocal'. The 2nd command inverts the order of the 'query' and 'database' protein sets, turning the 'query' of the first command into the 'database' and the 'database' into the 'query'. The output files need to be named differently, in a way that will help you keep track later on.
 
 ```bash
 ssearch36 -m 8 -b 1 -E 0.1 proteins_a proteins_b > proteins_a_vs_proteins_b_ssearch.txt
-ssearch36 -m 8 -b 1 -E 0.1 proteins_a proteins_b > proteins_b_vs_proteins_a_ssearch.txt
+ssearch36 -m 8 -b 1 -E 0.1 proteins_b proteins_a > proteins_b_vs_proteins_a_ssearch.txt
 ```
 From the 1st file (a vs b) extract just the identifiers, and sort them in alphabetical order:
 
@@ -30,7 +30,7 @@ For the 2nd file (b vs a), we need to invert the identifiers so that we can comp
 awk '{ print $2,$1 }' proteins_b_vs_proteins_a_ssearch.out | sort -u > b_vs_a.txt
 ```
 
-Each line consists of a pair of sequences. We just need to find the lines that are in common between the two files. We can do this using the unix `comm` command `comm` needs the files it's comparing to be sorted lexically, but we did this in the step above.
+Each line consists of a pair of sequences. We just need to find the lines that are in common between the two files. We can do this using the unix `comm` command. `comm` needs the files it's comparing to be sorted lexically, but we did this in the step above.
 
 ```bash
 comm -12 a_vs_b.out b_vs_a.out > rbh_ortholog_pairs.txt
