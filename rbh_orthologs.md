@@ -17,6 +17,8 @@ I do this using `ssearch` from the FASTA package, but you could use BLAST. (`sse
 ssearch36 -m 8 -b 1 -E 0.1 proteins_a proteins_b > proteins_a_vs_proteins_b_ssearch.txt
 ssearch36 -m 8 -b 1 -E 0.1 proteins_b proteins_a > proteins_b_vs_proteins_a_ssearch.txt
 ```
+These searches are likely to be quite slow (hours), depending on how many proteins there are.
+
 From the 1st file (a vs b) extract just the identifiers, and sort them in alphabetical order:
 
 ```bash
