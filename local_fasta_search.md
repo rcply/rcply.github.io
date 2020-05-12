@@ -1,5 +1,5 @@
 
-# How to search a sequence database from the command line
+# Searching a sequence database from the command line
 
 How do you search a set of sequences that you have put together - for instance, a new transcriptome, or a collection of proteins from recently sequenced genomes that are not yet available in one of the big repositories? What if you've just read an exciting genome paper and want to find homologs of particular genes that you're interested in? This section is an introduction to how to do this from the unix command line - that is, from within a terminal application. I assume some basic familiarity with Unix, its commands and filesystem (how to move around between directories, move files, write files, redirection etc.)
 
@@ -61,7 +61,7 @@ This should complete in a few seconds, and you can look at the results using a f
 
 ## Retrieving sequences from a FASTA library
 
-Here's the top of my hit list from the `ssearch` results.
+Here's the top of my hit list from the `ssearch` results. `blast` results look similar.
 
 ```
 g5412.t1                                           ( 279)  398 77.6 8.6e-15
@@ -91,15 +91,18 @@ To retrieve a list of ids from a Fasta database, you need to generate an index. 
 esl-sfetch --index pau_genome_v2.0_prot.fa
 ```
 or:
+
 ```bash
 samtools faidx pau_genome_v2.0_prot.fa
 ```
 Then, depending on which tool you used to generate the index (they're not compatible with each other) you can query with a specific sequence identifier or a list of identifiers in a text file:
+
 ```bash
 esl-sfetch pau_genome_v2.0_prot.fa g5414.t1
 esl-sfetch -f pau_genome_v2.0_prot.fa my_list.txt
 ```
 or (tested with samtools 1.10):
+
 ```bash
 samtools faidx pau_genome_v2.0_prot.fa g5414.t1
 samtools faidx pau_genome_v2.0_prot.fa --region-file my_list.txt
