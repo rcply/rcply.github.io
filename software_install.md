@@ -5,7 +5,7 @@ This can be a difficult and frustrating business. These notes are just for the e
 
 Ordinary Unix systems generally are set up to allow compilation of programs - you can skip to the next section. If you're using a Mac, you may need to install a compiler first.
 
-### Do you have a compiler installed already (Macs)?
+### Do you have a compiler installed already (for Mac)?
 
 You need to open a 'Terminal'. You can find the Terminal program from the Finder, following:
 
@@ -30,7 +30,7 @@ clang: error: no input files
 you *do* have a compiler. If, not, you need to install the Apple developer tools. You could install 'Xcode' from the App store, but this is enormous and takes ages to download. It's possible the computer will prompt you what to do after typing gcc, but if not you can  install the command line tools:
 
 ```bash
-xcode-select -install
+xcode-select --install
 ```
 
 ### Compile the HMMER software
