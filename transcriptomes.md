@@ -48,4 +48,9 @@ Depending on how much data there is / how fast your computer is, Trinity is like
 
 ## How to search a transcriptome assembly for genes of interest
 
-The transcriptome in `Trinity.fasta` is a bunch of nucleotide sequences. It's better to do database searches with protein sequences. There are programs that will conceptually translate the transcriptome during the search process. In the blast package from the NCBI, that means `tblastn`. To use BLAST, you first need to make a database using the `makeblastdb` command.
+The transcriptome in `Trinity.fasta` is a bunch of nucleotide sequences. It's better to do database searches with protein sequences. There are programs that will conceptually translate the transcriptome during the search process. In the blast package from the NCBI, that means `tblastn`. To use BLAST, you first need to make a database using the `makeblastdb` command. The Fasta package lets you search a fasta file directly. To search `Trinity.fasta` directly with a protein query, you can use `tfasty` (the current version is called `tfasty36`):
+
+```bash
+$ tfasty36 my_query_protein.fasta Trinity.fasta > my_results.txt
+```
+For more large-scale analysis of proteins, it may be useful to predict open reading frames in the Trinity assembly, using [transdecoder](https://transdecoder.github.io/).
