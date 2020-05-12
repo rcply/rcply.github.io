@@ -85,7 +85,7 @@ ctrl-d (after pressing return to get a new line)
 
 This should give you a file `id_list.txt` with a single column of sequence identifiers. Again, you could use a text editor to do this.
 
-To retrieve a list of ids from a Fasta database, you need to generate an index. You could do this with `samtools` or `esl-sfetch`.
+To retrieve a list of ids from a Fasta database, you need to generate an index. You could do this with `samtools` or `esl-sfetch`. `samtools` is quite likely to be installed on bioinformatics servers (I tested with version 1.10). `esl-sfetch` is part of the easel tools in the hmmer package, which is fairly easy to install ([instructions](https://rcply.github.io/software_install.html)).
 
 ```bash
 esl-sfetch --index pau_genome_v2.0_prot.fa
