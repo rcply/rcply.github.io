@@ -52,10 +52,16 @@ ctrl-d (after pressing return to get a new line)
 
 Less conveniently (if you are doing this a lot), you can open a text editor (e.g. vim, emacs or nano) and paste it in, saving it as a file.
 
-Then we can search it against the fasta library file we downloaded:
+Then we can search it against the fasta library file we downloaded. For a protein library, the best FASTA package program to use is `ssearch36`, for a nucleotide library, such as that made by `Trinity`, `tfasty36` works well.
 
+Searching proteins:
 ```bash
 $ ssearch36 myseq.fasta pau_genome_v2.0_prot.fa > myseq_results.txt
+```
+or, searching an assembled (but not translated) transcriptome:
+
+```bash
+$ tfasty36 myseq.fasta Trinity.fasta > myseq_results.txt
 ```
 This should complete in a few seconds, and you can look at the results using a file viewer such as `less`. The results will look broadly similar in style to database search results on a web server, although there will be no links to external databases. After some preamble, there is a list of database 'hits', including scores and statistical significance, with the remainder of the file showing alignments and more summary scores of the more significant database hits.
 
@@ -107,3 +113,5 @@ or (tested with samtools 1.10):
 samtools faidx pau_genome_v2.0_prot.fa g5414.t1
 samtools faidx pau_genome_v2.0_prot.fa --region-file my_list.txt
 ```
+
+These commands will print the fasta sequences of the ids onto the screen. They can be redirected to a file using the `>` operator, to make a file of sequences that can be used for later analysis, such as multiple sequence alignment.

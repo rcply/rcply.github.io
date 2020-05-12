@@ -33,7 +33,7 @@ I'm not sure how much of a problem adaptor sequences cause. In principle it woul
 $ fastqc <fastq file 1> <fastq file 2> <fastq file n>
 ```
 
-and read the html file produced. You can then remove adaptors using trimmomatic parameters in Trinity.
+and read the html file produced. You can then remove adaptors using trimmomatic parameters in Trinity (consult the Trinity manual).
 
 ## Assembling with Trinity
 
@@ -42,13 +42,13 @@ A typical trinity command looks like:
 ```bash
 $ Trinity --seqType fq --max_memory 200G --left left.fastq --right right.fastq --CPU 10
 ```
-where --CPU specifies the number of processors to use on your system and --max_memory the RAM you are allowing Trinity to use (if it needs it). 200G is a lot - 32G might be more realistic for a 'normal' server.
+where `--CPU` specifies the number of processors to use on your system and `--max_memory` the RAM you are allowing Trinity to use (if it needs it). 200G is a lot - 32G might be more realistic for a 'normal' server. Consult the manual for details of how to assemble from multiple fastq files and so on.
 
 Depending on how much data there is / how fast your computer is, Trinity is likely to take hours or days to run. When it is finished, the assembled transcriptome is found in `trinity_out_dir/Trinity.fasta`
 
 ## How to search a transcriptome assembly for genes of interest
 
-The transcriptome in `Trinity.fasta` is a bunch of nucleotide sequences. It's better to do database searches with protein sequences. There are programs that will conceptually translate the transcriptome during the search process. In the blast package from the NCBI, that means `tblastn`. To use BLAST, you first need to make a database using the `makeblastdb` command. The Fasta package lets you search a fasta file directly. To search `Trinity.fasta` directly with a protein query, you can use `tfasty` (the current version is called `tfasty36`):
+The transcriptome in `Trinity.fasta` is a bunch of nucleotide sequences. It's better to do database searches with protein sequences. There are programs that will conceptually translate the transcriptome during the search process. In the blast package from the NCBI, that means `tblastn`. To use BLAST, you first need to make a database using the `makeblastdb` command. The Fasta package lets you search a fasta file directly, without this additional step. To search `Trinity.fasta` with a protein query, you can use `tfasty` (the current version is called `tfasty36`):
 
 ```bash
 $ tfasty36 my_query_protein.fasta Trinity.fasta > my_results.txt

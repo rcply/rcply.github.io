@@ -62,7 +62,7 @@ make install
 ```
 The `--prefix /your/install/path` is optional, if you don't want to use the place that hmmer wants to use. If you don't change it, you may have to type in your password at the install stage. This is OK.
 
-I recommend also installing the 'easel' tools as there is some useful stuff there.
+I recommend also installing the 'easel' tools as there is some useful stuff there - in particular `esl-sfetch` is a good tool for pulling sequences out of fasta databases.
 
 ```bash
 cd easel
