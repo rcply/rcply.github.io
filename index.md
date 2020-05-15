@@ -6,6 +6,5 @@ Work in progress:
 - [assembling a transcriptome from short reads](transcriptomes.md)
 - [searching a fasta database locally](local_fasta_search.md)
 - [DIY orthologs from reciprocal best hits](rbh_orthologs.md)
-- multiple seqeunce alignment
+- [multiple sequence alignment](msa.md)
 - phylogenetic trees
-
