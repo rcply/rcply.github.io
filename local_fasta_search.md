@@ -50,7 +50,7 @@ PGNDEKAEESSEKSSSSPCVPSPGSSTSDTLTTSH
 ctrl-d (after pressing return to get a new line)
 ```
 
-Less conveniently (if you are doing this a lot), you can open a text editor (e.g. vim, emacs or nano) and paste it in, saving it as a file.
+Less conveniently (if you are doing this a lot), you can open a text editor (e.g. `vim`, `emacs` or `nano`) and paste it in, saving it as a file.
 
 Then we can search it against the fasta library file we downloaded. For a protein library, the best FASTA package program to use is `ssearch36`, for a nucleotide library, such as that made by `Trinity`, `tfasty36` works well.
 
