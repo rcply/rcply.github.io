@@ -27,7 +27,7 @@ Making an alignment is simple. If you have some sequences in a fasta file `my.fa
 mafft my.fasta > my.afa
 ```
 
-This will produce an alignment in aligned fasta format. This is basically the same as fasta, but with gaps indicated by `-` characters, so all sequences are the same length. It's very portable and a good choice for subsequent computational analysis, but it's very difficult to see what's going on, so we'll instead try clustal formot:
+This will produce an alignment in aligned fasta format. This is basically the same as fasta, but with gaps indicated by `-` characters, so all sequences are the same length. It's very portable and a good choice for subsequent computational analysis, but it's very difficult to see what's going on, so we'll instead try clustal format:
 
 ```bash
 mafft --clustalout my.fasta > my.aln

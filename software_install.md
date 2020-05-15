@@ -3,7 +3,18 @@
 
 This can be a difficult and frustrating business. These notes are just for the easy cases. Most cases are easy, especially for popular software (one of the reasons that software might be popular is that it's easy to install), but when things don't work, there are so many possible things that might have gone wrong that you'll need to get advice from an expert or Google the error message.
 
-Ordinary Unix systems generally are set up to allow compilation of programs - you can skip to the next section. If you're using a Mac, you may need to install a compiler first.
+## Is the program you want compiled already?
+
+If the software you want gives you the opportunity to download precompiled binaries, it is generally easier to do this. Binaries are specific to machine types, so you're likely to see versions for OSX, Linux and Windows. Download the correct version, unpack it and you should be OK. Remember that any program you want to run needs to be in your path, or you need to specify the path to that program directly when you invoke it. e.g. if you had a program called `run_me` in your `Downloads` folder, you'd have to type something like:
+
+```bash
+~/Downloads/run_me
+```
+If this sort of thing is completely unfamiliar it might be a good idea to investigate some basic Unix tutorials.
+
+## Compiling programs
+
+Some software is distributed as source code (a text file with the program written in it) and needs compiling before it can be used. Ordinary Unix systems generally are set up to allow compilation of programs - you can skip to the next section. If you're using a Mac, you may need to install a compiler first.
 
 ### Do you have a compiler installed already (for Mac)?
 
