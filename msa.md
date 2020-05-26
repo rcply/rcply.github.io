@@ -15,10 +15,10 @@ Depending on the exact situation, fixing these issues may be easier *after* the 
 
 ## Database searching tip - global/local search
 
-Often when constructing a multiple sequence alignment, you know the region that you want to be covered, such as a single domain or combination of domains in a larger protein, or you might be interested in several repeating domains (e.g. a run of zinc fingers or WD40 repeats). These cases can cause lots of database hits to be fragments of the query sequence. One thing to try in this kind of  situation is the `glsearch36` program from the Fasta package. `glsearch36` performs a search that is global (i.e. full-length) in the query sequence, but local (i.e. can be partial) in the database sequence. It's a drop in replacement for `ssearch36`:
+Often when constructing a multiple sequence alignment, you know the region that you want to be covered, such as a single domain or combination of domains in a larger protein, or you might be interested in several repeating domains (e.g. a run of zinc fingers or WD40 repeats). These cases can cause lots of database hits to be fragments of the query sequence. One thing to try in this kind of  situation is the `glsearch36` program from the Fasta package. `glsearch36` performs a search that is global (i.e. full-length) in the query sequence, but local (i.e. can be partial) in the database sequence. You need to make a new fasta file from your query with just the region of interest in, then it's a drop in replacement for `ssearch36`:
 
 ```bash
-glsearch36 query.fasta database.fasta > results.txt
+glsearch36 region_of_interest.fasta database.fasta > results.txt
 ```
 
 Beware that it will force alignments to be global on the query, even if they're bad matches. This should have the effect though, that good matches have much better scores and so can be easily extracted from the results.
