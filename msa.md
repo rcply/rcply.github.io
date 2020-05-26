@@ -13,6 +13,16 @@ The hard thing about multiple sequence alignment is knowing what to include. Unl
 
 Depending on the exact situation, fixing these issues may be easier *after* the sequences have been aligned. Simple inspection of the results may make it obvious what cuts and trimming need to be made. In less favourable cases, these issues may mess up the alignment process, and it may not be easy to see what has happened. If you know what needs to go ahead of time though, and it's easy to do, you may end up with better results by pre-processing the sequences you include.
 
+## Database searching tip - Global/Local Search
+
+Often when constructing a multiple sequence alignment, you know the region that you want to be covered, but it may be multidomain (e.g. several Zinc fingers or repeats) in some way that causes lots of database hits to be fragments of the query sequence. One thing to try in these cases is the `glsearch36` program from the Fasta package. `glsearch36` performs a search that is global (i.e. full-length) in the query sequence, but local (i.e. can be partial) in the database sequence. It's a drop in replacement for `ssearch36`:
+
+```bash
+glsearch36 query.fasta database.fasta > results.txt
+```
+
+Beware that it will force alignments to be global on the query, even if they're bad matches. This should have the effect though, that good matches have much better scores and so can be easily extracted from the results.
+
 ## Sequence identifiers
 
 You want to be able to interpret your sequence alignment after you've made it, so it helps to have informative sequence identifiers. This will depend on your question, but typically you might want to encode the species or gene family name in some way. Some alignment programs complain about repeated identifiers and some don't. Obviously you don't want repeated identifiers, but it may not matter if the program handles them sensibly. A related problem is that older programs sometimes truncated the sequence identifiers making them identical. This shouldn't happen with up-to-date alignment programs. Depending on the output format though, the identifiers might still be truncated in the output. Be careful.
