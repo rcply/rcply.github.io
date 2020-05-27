@@ -23,6 +23,8 @@ glsearch36 region_of_interest.fasta database.fasta > results.txt
 
 Beware that it will force alignments to be global on the query, even if they're bad matches. This should have the effect though, that good matches have much better scores and so can be easily extracted from the results.
 
+## Extracting sequence regions from a Fasta file
+
 If you want to retrieve particular regions of sequences from a fasta file, you can do this with `esl-sfetch`. You need to prepare a file of lines in this format:
 
 ```
