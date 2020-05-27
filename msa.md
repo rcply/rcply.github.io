@@ -23,6 +23,22 @@ glsearch36 region_of_interest.fasta database.fasta > results.txt
 
 Beware that it will force alignments to be global on the query, even if they're bad matches. This should have the effect though, that good matches have much better scores and so can be easily extracted from the results.
 
+If you want to retrieve particular regions of sequences from a fasta file, you can do this with `esl-sfetch`. You need to prepare a file of lines in this format:
+
+```
+new_name start end source_identifier
+```
+This is most easily done using one of the tabular format outputs from you database search program. If you use the `-m 8` option with `ssearch36`, columns 9 and 10 have the start and end position of the database hit, and column 2 the id of the database hit. First you should remove rows from the table that are not siginficant, baed on their E-values. The significant hits can then be extracted with an `awk` command:
+
+```bash
+awk '{ print $2"/"$9"-"$10,$9,$10,$2 }' signif_hits.txt > identifier_file.txt
+```
+
+The sequences can then be retrieved like this:
+```bash
+esl-sfetch -Cf my_database.fasta identfier_file.txt > seq_regions_to_align.fa
+```
+
 ## Sequence identifiers
 
 You want to be able to interpret your sequence alignment after you've made it, so it helps to have informative sequence identifiers. This will depend on your question, but typically you might want to encode the species or gene family name in some way. Some alignment programs complain about repeated identifiers and some don't. Obviously you don't want repeated identifiers, but it may not matter if the program handles them sensibly. A related problem is that older programs sometimes truncated the sequence identifiers making them identical. This shouldn't happen with up-to-date alignment programs. Depending on the output format though, the identifiers might still be truncated in the output. Be careful.
