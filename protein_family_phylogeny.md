@@ -1,9 +1,9 @@
 
 # Phylogeny for protein families
 
-Most of the rancourous debate in phylogenetics revolves around species trees. When constructing a species tree, you generally have one 'sequence' per species, this being made up of the concatenated protein sequences of as many different genes as possible, while still having a reasonable alignment with the same genes from different species. This is a rather special use of phylogenetic analysis, aimed at answering the question 'what is the true phylogeny of these species?'
+Most of the rancourous debate in phylogenetics revolves around species trees. When constructing a species tree, you generally have one 'sequence' per species, this being made up of the concatenated protein sequences of as many different genes as possible, while still having a reasonable alignment with the same genes from different species. This is a rather special use of phylogenetic analysis, aimed at answering the question 'what is the true phylogeny of these species?' Unless that happens to be your research question, I wouldn't get involved. If it is your research question start [here](https://www.nature.com/articles/s41576-020-0233-).
 
-In this section, I am concerned instead with the relationships between genes of a given family, with the possibility of many family members per species. How do we determine the species 'a' orthologs of genes from species 'b'?
+In this section, I am concerned instead with the relationships between genes of a given family, with the possibility of many family members per species. How do we determine the species 'a' orthologs of genes from species 'b'? Recall that orthologs are genes that are related by speciation events, and paralogs genes that are related by a duplication event within a genome. In complex multi-gene families there are likely to be genes that are related by many such events, and a phylogenetic tree helps disentangle them.
 
 ### Making trees from multiple sequence alignments
 
@@ -26,6 +26,7 @@ A much faster option than `iqtree` is `FastTree`. This tends to produce less goo
 ```bash
 FastTree -lg my_sequences.mfa > my_sequences.tree
 ```
+Here `-lg` specifies the LG model of protein evolution (as we used for `iqtree`), probably a better choice than the default.
 
 ### Tree file formats
 
@@ -42,6 +43,8 @@ cat my_tree.treefile | pbcopy
 ```
 will be your tree file. You can then paste it using ctrl-v.
 
-### The bootstrap
+### The bootstrap and friends
 
-How can you be confident about the relationships in your tree?
+How can you be confident about the relationships in your tree? One formal test is the bootstrap. This basically resamples (with replacement) columns from your alignment to make a new alignment of the same size, and then calculates a phylogenetic tree on the new alignment. Nodes that are present in the initial tree and also supported by this newly resampled alignment get a +1 on their boostrap score. This resampling is then repeated typically 100 or 1000 times, and the fraction of repeated nodes reported for each node on the original tree. This procedure is OK for small alignments where it is quick to calculate, but can be very slow, as you basically have to rebuild the tree 100 times.
+
+A major complaint about the boostrap is that it can produce a false sense of certainty. If your evolutionary model is no good (and their is a lot we don't know about the way proteins evolve), branches can be well supported, but still wrong. My major complaint about it is that it doesn't really tell you anything that you can't (with a bit of experience perhaps) see for yourself in the structure of the tree. Well supported nodes tend to be well supported by the species evidence (i.e. genes from similar species behave in similar ways). Well supported nodes tend to be separated by relatively long braches. When branches are tightly spaced, they don't have time to accumulate many amino acid substitutions, so it's less likely that there will be good support for associated tree nodes. Journals like bootstrap values though. For `iqtree` you invoke them with `-b 100` where the number is the number of replicates. `iqtree` also has an 'ultrafast' bootstrap that can be invoked with `-B 100`.
