@@ -38,7 +38,7 @@ awk '{ print $2"/"$9"-"$10,$9,$10,$2 }' signif_hits.txt > identifier_file.txt
 
 The sequences can then be retrieved like this:
 ```bash
-esl-sfetch -Cf my_database.fasta identfier_file.txt > seq_regions_to_align.fa
+esl-sfetch -Cf my_database.fasta identifier_file.txt > seq_regions_to_align.fa
 ```
 
 ## Sequence identifiers
