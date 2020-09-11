@@ -7,7 +7,7 @@ How do you search a set of sequences that you have put together - for instance, 
 
 By genome, I really mean sets of predicted proteins. Interesting sources of data for marine invertebrates might include [OIST Marine Genomics Unit](https://marinegenomics.oist.jp/), [Ensembl Metazoa](http://metazoa.ensembl.org/index.html), [the NCBI genomes portal](https://www.ncbi.nlm.nih.gov/genome/browse#!/overview/) (filter this by 'animals', then 'other animals' unless you like vertebrates).
 
-So, download a fasta file like [this one](https://marinegenomics.oist.jp/pau_v2/download/pau_genome_v2.0_prot.fa.gz) of the proteins from *Phoronis australiensis*. It's probably OK to download directly from the browser (right click, save as...), or you can do it from the command line with `wget`:
+So, download a fasta file like [this one](https://marinegenomics.oist.jp/pau_v2/download/pau_genome_v2.0_prot.fa.gz) of the proteins from *Phoronis australis*. It's probably OK to download directly from the browser (right click, save as...), or you can do it from the command line with `wget`:
 
 ```bash
 $ wget https://marinegenomics.oist.jp/pau_v2/download/pau_genome_v2.0_prot.fa.gz
