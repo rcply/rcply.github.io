@@ -15,15 +15,15 @@ For this example, I'm going to assume that we're working in a base directory wit
 
 ## Making a genome database for STAR
 
-Copy the files `clytia_hm2` (or your genome fasta file), `filtered_for_orf.gtf` (or your gene annotation file) and `mk_index.com` to a new genome directory.
+Copy the files `clytia_hm2` (or your genome fasta file), `filtered_for_orf.gtf` (or your gene annotation file) and `mk_index.com` to a new genome directory (so, if you're following the directory structure above that would be in `genome/`).
 
-Run the command in `mk_index.com`.
+In that directory, run the command in `mk_index.com`.
 
 ```
 STAR --genomeDir . --genomeFastaFiles clytia_hm2 --sjdbGTFfile filtered_for_orf.gtf --genomeChrBinNbits 16 --genomeSAindexNbases 14 --runMode genomeGenerate
 ```
 
-This will take a while - it combines the annotation in the gtf file with the sequence in the genome file to make a database that STAR can search. The `--genomeChrBinNbits 16` and `--genomeSAindexNbases 14` relate to issues searching small and fragmentary genome and are discussed in the STAR manual. When it is done there should be many new files in the working directory.
+This will take a while - it combines the annotation in the gtf file with the sequence in the genome file to make a database that STAR can search, so that it knows which genes are mapped when reads map to a particular region of the genome. The `--genomeChrBinNbits 16` and `--genomeSAindexNbases 14` relate to issues searching small and fragmentary genome and are discussed in the STAR manual. When it is done there should be many new files in the working directory.
 
 Generally you only need to do this once, although I have seen STAR complain that the database version has changed (i.e. if you use a new version of STAR, you may need to recreate the database).
 
@@ -71,6 +71,6 @@ STAR --genomeDir ../genome/ --readFilesIn ../fastq/Clytia-aboral-1_1.fq.gz ../fa
 
 ## STAR output files
 
-Check the final log file (`*__Log.final.out`) - in our case `Ch_AB_1_Log.final.out`. The key thing to check is the % of uniquely mapped reads. You would like this to be above 60% ideally. The exact figure might depend on the experimental system, how much contamination there is etc. Very low numbers (e.g. close to 0%) suggest that something has gone wrong e.g. you have accidentally mixed up read files / not given correct paired reads.
+Check the final log file (`*_Log.final.out`) - in our case `Ch_AB_1_Log.final.out`. The key thing to check is the % of uniquely mapped reads. You would like this to be above 60% ideally. The exact figure might depend on the experimental system, how much contamination there is etc. Very low numbers (e.g. close to 0%) suggest that something has gone wrong e.g. you have accidentally mixed up read files / not given correct paired reads.
 
 The gene counts are in the `*_ReadsPerGene.out.tab` file, `Ch_AB_1_ReadsPerGene.out.tab`. This contains 4 columns: 1) the gene identifier 2) the total number of reads for the gene 3) the number of left reads 4) the number of right reads. (The left or right reads may be close to 0 if the sequenced library was made using a stranded protocol).
