@@ -8,3 +8,4 @@ Work in progress:
 - [DIY orthologs from reciprocal best hits](rbh_orthologs.md)
 - [multiple sequence alignment](msa.md)
 - [protein family phylogeny](protein_family_phylogeny.md)
+- [quantifying reads for RNA-seq](quantifying_reads.md)

@@ -21,7 +21,6 @@ Run the command in `mk_index.com`.
 
 ```
 STAR --genomeDir . --genomeFastaFiles clytia_hm2 --sjdbGTFfile filtered_for_orf.gtf --genomeChrBinNbits 16 --genomeSAindexNbases 14 --runMode genomeGenerate
-
 ```
 
 This will take a while - it combines the annotation in the gtf file with the sequence in the genome file to make a database that STAR can search. The `--genomeChrBinNbits 16` and `--genomeSAindexNbases 14` relate to issues searching small and fragmentary genome and are discussed in the STAR manual. When it is done there should be many new files in the working directory.
